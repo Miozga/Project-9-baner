@@ -18,14 +18,22 @@ const slideList = [
 const image = document.querySelector("img.slider");
 const h1 = document.querySelector("h1.slider");
 //pobieramy spamy gdzie znajdują się kropki
-const dots = [...document.querySelector(".dots span")]; //za pomoca rest "..." i [] zamieniamy na tablicę
+const dots = [...document.querySelectorAll(".dots span")];
+//za pomoca rest "..." i [] zamieniamy na tablicę
 
 //mozna sobie ustawiać
 const time = 1000;
 let active = 0;
 
 //implementacje
-const changeDot = () => {};
+const changeDot = () => {
+  const activeDot = dots.findIndex((dot) => dot.classList.contains("active"));
+  if (activeDot !== -1) {
+    dots[activeDot].classList.remove("active");
+  }
+  dots[active].classList.add("active");
+};
+
 const changeSlide = () => {
   active++;
   if (active === slideList.length) {
