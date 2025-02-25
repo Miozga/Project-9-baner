@@ -1,3 +1,4 @@
+//tablica z obiektami
 const slideList = [
   {
     img: "images/img1.jpg",
@@ -12,3 +13,26 @@ const slideList = [
     text: "Trzeci tekst",
   },
 ];
+
+//pobieramy obrazy
+const image = document.querySelector("img.slider");
+const h1 = document.querySelector("h1.slider");
+//pobieramy spamy gdzie znajdują się kropki
+const dots = [...document.querySelector(".dots span")]; //za pomoca rest "..." i [] zamieniamy na tablicę
+
+//mozna sobie ustawiać
+const time = 1000;
+let active = 0;
+
+//implementacje
+const changeDot = () => {};
+const changeSlide = () => {
+  active++;
+  if (active === slideList.length) {
+    active = 0;
+  }
+  image.src = slideList[active].img;
+  h1.textContent = slideList[active].text;
+  changeDot();
+};
+setInterval(changeSlide, time);
